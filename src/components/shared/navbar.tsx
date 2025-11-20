@@ -1,5 +1,5 @@
 'use client';
-import Image from 'next/image';
+
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
@@ -93,13 +93,7 @@ const Navbar = () => {
       `}
     >
       <Link href="/" className="w-[120px] sm:w-[150px] md:w-auto">
-        <Image
-          src="/assets/svg/logo.svg"
-          alt="logo"
-          width={150}
-          height={24}
-          className="h-6"
-        />
+        <img src="assets/svg/logo.svg" alt="logo" className="h-6" />
       </Link>
 
       <div className="flex items-center gap-5">

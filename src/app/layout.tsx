@@ -1,18 +1,12 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import { Figtree } from 'next/font/google';
 
 import './globals.css';
 
-const figtree = localFont({
-  src: [
-    { path: '/fonts/Figtree-VariableFont_wght.ttf', weight: '100 900' },
-    { path: '/fonts/static/Figtree-Light.ttf', weight: '300' },
-    { path: '/fonts/static/Figtree-Regular.ttf', weight: '400' },
-    { path: '/fonts/static/Figtree-Medium.ttf', weight: '500' },
-    { path: '/fonts/static/Figtree-SemiBold.ttf', weight: '600' },
-    { path: '/fonts/static/Figtree-Bold.ttf', weight: '700' },
-    { path: '/fonts/static/Figtree-Black.ttf', weight: '800' },
-  ],
+const figtree = Figtree({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
   variable: '--font-figtree',
 });
 
@@ -29,8 +23,8 @@ export const metadata: Metadata = {
     statusBarStyle: 'black-translucent',
   },
   icons: {
-    icon: ['/favicon.ico', '/icon-192.png'],
-    apple: ['/apple-icon.png'],
+    icon: ['/favicon.png'],
+    apple: ['/apple-favicon.png'],
   },
   manifest: '/manifest.json',
   robots: {
@@ -52,7 +46,7 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
       </head>
-      <body className={`${figtree.className}`}>{children}</body>
+      <body className={figtree.variable}>{children}</body>
     </html>
   );
 }
