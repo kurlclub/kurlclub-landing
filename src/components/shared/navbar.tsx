@@ -143,12 +143,16 @@ const Navbar = () => {
           </div>
         </div>
 
-        <Button variant="primary" className="hidden md:block">
-          Login
-        </Button>
-        <Button variant="secondary" className="hidden md:block">
-          Book a demo
-        </Button>
+        <Link href="https://app.kurlclub.com/auth/login">
+          <Button variant="primary" className="hidden md:block">
+            Login
+          </Button>
+        </Link>
+        <Link href="/enquiry">
+          <Button variant="secondary" className="hidden md:block">
+            Book a demo
+          </Button>
+        </Link>
         <button
           onClick={() => setOpen(true)}
           className="md:hidden mr-1 w-6 h-6"
