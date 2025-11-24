@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 
 import { EnquiryCard, ThanksCard } from '@/components/enquiry';
 
@@ -10,7 +10,9 @@ const Enquiry = () => {
       {isSubmitted ? (
         <ThanksCard />
       ) : (
-        <EnquiryCard onSubmit={() => setSubmitted(true)} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <EnquiryCard onSubmit={() => setSubmitted(true)} />
+        </Suspense>
       )}
     </>
   );
