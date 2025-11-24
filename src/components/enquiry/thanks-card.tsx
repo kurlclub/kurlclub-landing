@@ -59,7 +59,7 @@ const ThanksCard = () => {
         </div>
       </div>
       <div
-        className="hidden absolute sm:-right-130 md:-right-80 lg:-right-60 xl:-right-40 top-0 sm:grid grid-cols-3 h-screen gap-6 overflow-hidden max-w-[850px]  pointer-events-none select-none touch-none
+        className="hidden absolute sm:-right-130 md:-right-60 lg:-right-40 xl:-right-20 top-0 sm:grid grid-cols-3 h-screen gap-6 overflow-hidden max-w-[850px]  pointer-events-none select-none touch-none
        before:absolute before:top-0 before:right-0
     before:w-full before:h-1/2
     before:bg-linear-to-b 

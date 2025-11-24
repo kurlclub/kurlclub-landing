@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Figtree } from 'next/font/google';
 
 import './globals.css';
+import { Toaster } from 'react-hot-toast';
 
 const figtree = Figtree({
   subsets: ['latin'],
@@ -140,7 +141,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={figtree.variable}>{children}</body>
+      <body className={figtree.variable}>
+        {children}
+          <Toaster position="top-right" />
+        </body>
     </html>
   );
 }

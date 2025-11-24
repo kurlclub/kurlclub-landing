@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 
 import Button from '../shared/button';
+import toast from 'react-hot-toast';
 
 interface InputProps {
   type?: string;
@@ -35,19 +36,21 @@ const HeroInput: React.FC<InputProps> = ({
     return regex.test(mail);
   };
 
-  const handleButtonClick = () => {
-    if (!email.trim()) {
-      console.error('Please enter your email address.');
-      return;
-    }
-    if (!validateEmail(email)) {
-      console.error('Please enter a valid email address.');
-      return;
-    }
+const handleButtonClick = () => {
+  if (!email.trim()) {
+    toast.error('Please enter your email address.');
+    return;
+  }
 
-    console.log('Email submitted successfully!');
-    if (onSuffixClick) onSuffixClick();
-  };
+  if (!validateEmail(email)) {
+    toast.error('Please enter a valid email address.');
+    return;
+  }
+
+  toast.success('Email submitted successfully!');
+
+  if (onSuffixClick) onSuffixClick();
+};
 
   return (
     <div
