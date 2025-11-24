@@ -6,6 +6,9 @@ const Features = () => {
       id="features"
       className="flex container flex-col gap-10 sm:gap-[70px] md:gap-[95px] w-full pt-10 sm:pt-15 sm::pt-20"
     >
+      <h2 className="text-center text-3xl md:text-5xl font-bold mb-8">
+        Complete <span className="text-primary-green-500">Gym Management</span> Features
+      </h2>
       <FeatureCard
         title={
           <>

@@ -44,7 +44,7 @@ const Hero = () => {
 
       <div className="flex flex-col gap-4 sm:gap-8 justify-center sm:justify-start h-[calc(100dvh-320px)] sm:h-auto">
         {/* Heading */}
-        <h5 className="relative text-[46px] sm:text-7xl md:text-[110px] leading-[105%] z-10">
+        <h1 className="relative text-[46px] sm:text-7xl md:text-[110px] leading-[105%] z-10">
           Streamline your
           <span className="block font-semibold italic bg-linear-to-r from-[#D3F702] via-[#D3F702] via-35% to-[#F9FFD4] bg-clip-text text-transparent">
             fitness business
@@ -52,7 +52,7 @@ const Hero = () => {
           <div className="absolute sm:-bottom-1 md:bottom-0 left-[10%] md:-left-1 h-px w-[51px] sm:w-[93px] bg-linear-to-r from-[#D3F702/0] to-[#D3F702]" />
           <div className="absolute sm:-bottom-1 md:bottom-0 right-[15%] sm:right-[130px] h-px w-[51px] sm:w-[120px] bg-linear-to-r from-[#D3F702/0] to-[#D3F702]" />
           <div className="absolute top-[58%] left-[32%] h-px w-[51px] sm:w-[93px] bg-linear-to-r from-[#D3F702/0] to-[#D3F702]" />
-        </h5>
+        </h1>
         {/*Subtitle */}
         <p className="text-[13px] sm:text-[20px] md:text-[28px] font-medium leading-[109%] max-w-[500px] sm:max-w-[720px] text-center text-white/90 relative z-10">
           Supercharge your fitness business with the powerful tools and services

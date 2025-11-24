@@ -22,9 +22,9 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         <h5 className="uppercase text-[14px] font-semibold text-primary-green-100">
           Features
         </h5>
-        <p className="font-medium text-[28px] sm:text-[40px] md:text-[50px] leading-[100%]">
+        <h3 className="font-medium text-[28px] sm:text-[40px] md:text-[50px] leading-[100%]">
           {title}
-        </p>
+        </h3>
         <p className="text-[15px]">{description}</p>
       </div>
       <div className="w-full h-full max-w-[600px] sm:max-w-[482px] sm:max-h-[482px]">
