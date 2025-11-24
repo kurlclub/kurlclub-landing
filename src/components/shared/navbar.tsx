@@ -134,16 +134,18 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="mt-auto flex flex-col gap-4 items-center md:hidden">
-            <Button variant="primary" className="w-full">
-              Login
-            </Button>
+            <Link href="https://app.kurlclub.com/auth/login" target="_blank">
+              <Button variant="primary" className="w-full">
+                Login
+              </Button>
+            </Link>
             <Button variant="secondary" className="w-full">
               Book a demo
             </Button>
           </div>
         </div>
 
-        <Link href="https://app.kurlclub.com/auth/login">
+        <Link href="https://app.kurlclub.com/auth/login" target="_blank">
           <Button variant="primary" className="hidden md:block">
             Login
           </Button>

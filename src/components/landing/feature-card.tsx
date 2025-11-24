@@ -19,9 +19,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       className={`flex items-start sm:items-center gap-5 flex-col sm:flex-row sm:gap-6 w-full justify-between ${position === 'right' ? 'flex-col sm:flex-row-reverse' : ''}`}
     >
       <div className="flex flex-col gap-3 sm:max-w-[400px] md:max-w-[501px] w-full ">
-        <h5 className="uppercase text-[14px] font-semibold text-primary-green-100">
-          Features
-        </h5>
         <h3 className="font-medium text-[28px] sm:text-[40px] md:text-[50px] leading-[100%]">
           {title}
         </h3>
