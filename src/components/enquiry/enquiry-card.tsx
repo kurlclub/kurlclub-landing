@@ -1,6 +1,9 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
 import Button from '@/components/shared/button';
 import Input from '@/components/shared/input';
@@ -11,6 +14,8 @@ interface EnquiryCardProps {
 }
 
 const EnquiryCard: React.FC<EnquiryCardProps> = ({ onSubmit }) => {
+  const searchParams = useSearchParams();
+  const [email, setEmail] = useState(() => searchParams.get('email') || '');
   return (
     <div className="w-full flex h-dvh md:h-screen items-center container flex-col gap-10 sm:gap-20 md:flex-row md:gap-8 lg:gap-10 xl:gap-20 sm:justify-center overflow-hidden py-7 md:py-0 max-w-[600px]! md:max-w-[1200px]!">
       {/* Background glow */}
@@ -25,10 +30,12 @@ const EnquiryCard: React.FC<EnquiryCardProps> = ({ onSubmit }) => {
   "
       >
         <div className="flex items-center gap-4">
-          <button className="cursor-pointer w-6 h-6 text-white/60 hover:text-primary-green-500 k-transition">
-            {' '}
-            <BackIcon />
-          </button>
+          <Link href="/" className="flex items-center">
+            <button className="cursor-pointer w-6 h-6 text-white/60 hover:text-primary-green-500 k-transition">
+              {' '}
+              <BackIcon />
+            </button>
+          </Link>
           <span className="h-4 w-[116px]">
             <Image
               src="/assets/svg/logo.svg"
@@ -62,7 +69,12 @@ const EnquiryCard: React.FC<EnquiryCardProps> = ({ onSubmit }) => {
         <div className="flex flex-col gap-3 sm:gap-5">
           <Input label="Name" />
           <Input label="Business name" />
-          <Input label="Email" />
+          <Input
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <Input label="Phone" />
         </div>
         <Button onClick={onSubmit} className="w-full mt-3">

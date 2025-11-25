@@ -1,10 +1,11 @@
 'use client';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface InputProps {
   type?: string;
   name?: string;
   label?: string;
+  value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   className?: string;
@@ -14,12 +15,17 @@ const Input: React.FC<InputProps> = ({
   type = 'text',
   name,
   label,
+  value = '',
   disabled = false,
   className = '',
   onChange,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [hasValue, setHasValue] = useState(false);
+  const [hasValue, setHasValue] = useState(value.length > 0);
+
+  useEffect(() => {
+    setHasValue(value.length > 0);
+  }, [value]);
 
   return (
     <div
@@ -58,6 +64,7 @@ const Input: React.FC<InputProps> = ({
         name={name}
         disabled={disabled}
         required
+        value={value}
         onChange={(e) => {
           setHasValue(e.target.value.trim().length > 0);
           onChange?.(e);

@@ -1,8 +1,9 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 import Button from '../shared/button';
-import toast from 'react-hot-toast';
 
 interface InputProps {
   type?: string;
@@ -36,21 +37,30 @@ const HeroInput: React.FC<InputProps> = ({
     return regex.test(mail);
   };
 
-const handleButtonClick = () => {
-  if (!email.trim()) {
-    toast.error('Please enter your email address.');
-    return;
-  }
+  const router = useRouter();
 
-  if (!validateEmail(email)) {
-    toast.error('Please enter a valid email address.');
-    return;
-  }
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleButtonClick();
+    }
+  };
 
-  toast.success('Email submitted successfully!');
+  const handleButtonClick = () => {
+    if (!email.trim()) {
+      toast.error('Please enter your email address.');
+      return;
+    }
 
-  if (onSuffixClick) onSuffixClick();
-};
+    if (!validateEmail(email)) {
+      toast.error('Please enter a valid email address.');
+      return;
+    }
+
+    // Navigate to enquiry page with email parameter
+    router.push(`/enquiry?email=${encodeURIComponent(email)}`);
+
+    if (onSuffixClick) onSuffixClick();
+  };
 
   return (
     <div
@@ -68,6 +78,7 @@ const handleButtonClick = () => {
           setEmail(e.target.value);
           if (onChange) onChange(e);
         }}
+        onKeyDown={handleKeyDown}
         disabled={disabled}
         required={required}
         className="w-full bg-transparent outline-none text-white text-[14px] sm:text-[16px] placeholder:text-white/60"
