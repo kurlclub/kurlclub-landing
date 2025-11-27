@@ -19,7 +19,7 @@ export default function Home() {
         <StartAndGrow />
         <Features />
         <Testimonials />
-        <Pricing />
+        {/* <Pricing /> */}
         <Faq />
       </div>
       <FooterCard />

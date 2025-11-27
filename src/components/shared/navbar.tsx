@@ -17,7 +17,7 @@ const Navbar = () => {
       { id: 1, label: 'About', href: '#about' },
       { id: 2, label: 'Features', href: '#features' },
       { id: 3, label: 'Testimonials', href: '#testimonial' },
-      { id: 4, label: 'Pricing', href: '#pricing' },
+      // { id: 4, label: 'Pricing', href: '#pricing' },
       { id: 5, label: 'FAQ', href: '#faq' },
     ],
     []
@@ -134,16 +134,20 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="mt-auto flex flex-col gap-4 items-center md:hidden">
-            <Link href="https://app.kurlclub.com/auth/login" target="_blank" className='w-full'>
+            <Link
+              href="https://app.kurlclub.com/auth/login"
+              target="_blank"
+              className="w-full"
+            >
               <Button variant="primary" className="w-full">
                 Login
               </Button>
             </Link>
-              <Link href="/enquiry" className='w-full'>
-            <Button variant="secondary" className="w-full">
-              Book a demo
-            </Button>
-              </Link>
+            <Link href="/enquiry" className="w-full">
+              <Button variant="secondary" className="w-full">
+                Book a demo
+              </Button>
+            </Link>
           </div>
         </div>
 
