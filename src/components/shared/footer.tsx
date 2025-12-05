@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import {
   FacebookIcon,
@@ -34,45 +35,63 @@ const Footer = () => {
 
           <div className="flex items-center gap-5">
             {[
-              InstagramIcon,
-              XIcon,
-              FacebookIcon,
-              YoutubeIcon,
-              TicktockIcon,
-            ].map((Icon, index) => (
-              <span
+              {
+                Icon: InstagramIcon,
+                href: 'https://www.instagram.com/kurlclub/',
+              },
+              { Icon: XIcon, href: 'https://x.com/KurlClub' },
+              {
+                Icon: FacebookIcon,
+                href: 'https://www.facebook.com/share/16giTNY2wg/',
+              },
+              { Icon: YoutubeIcon, href: 'https://www.youtube.com/@kurlclub' },
+            ].map(({ Icon, href }, index) => (
+              <Link
                 key={index}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="cursor-pointer hover:scale-110 transition-transform duration-300"
               >
                 <Icon />
-              </span>
+              </Link>
             ))}
           </div>
         </div>
 
         {/* Right section */}
         <div className="flex gap-20 md:gap-[188px] items-start">
-          {/* Column 1 */}
           <div className="flex flex-col gap-5 sm:gap-6">
-            {['about', 'features', 'blogs', 'customer'].map((item, i) => (
-              <span
+            {[
+              { label: 'about', href: '#about' },
+              { label: 'features', href: '#features' },
+              { label: 'blogs', href: '#' },
+              { label: 'Testimonials', href: '#testimonial' },
+            ].map(({ label, href }, i) => (
+              <Link
                 key={i}
+                href={href}
                 className="capitalize text-[15px] leading-[109%] cursor-pointer hover:text-primary-green-500 transition-colors duration-300"
               >
-                {item}
-              </span>
+                {label}
+              </Link>
             ))}
           </div>
 
-          {/* Column 2 */}
           <div className="flex flex-col gap-5 sm:gap-6">
-            {['FAQ', 'Careers', 'Legal policy', 'Get a demo'].map((item, i) => (
-              <span
+            {[
+              { label: 'FAQ', href: '#faq' },
+              { label: 'Careers', href: '#' },
+              { label: 'Legal policy', href: '#' },
+              { label: 'Get a demo', href: '/enquiry' },
+            ].map(({ label, href }, i) => (
+              <Link
                 key={i}
+                href={href}
                 className="text-[15px] leading-[109%] cursor-pointer hover:text-primary-green-500 transition-colors duration-300"
               >
-                {item}
-              </span>
+                {label}
+              </Link>
             ))}
           </div>
         </div>
