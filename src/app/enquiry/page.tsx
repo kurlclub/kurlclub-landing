@@ -3,7 +3,7 @@ import { Suspense, useState } from 'react';
 
 import { EnquiryCard, ThanksCard } from '@/components/enquiry';
 
-const Enquiry = () => {
+const EnquiryPage = () => {
   const [isSubmitted, setSubmitted] = useState(false);
   return (
     <>
@@ -11,11 +11,11 @@ const Enquiry = () => {
         <ThanksCard />
       ) : (
         <Suspense fallback={<div>Loading...</div>}>
-          <EnquiryCard onSubmit={() => setSubmitted(true)} />
+          <EnquiryCard onSubmitClick={() => setSubmitted(true)} />
         </Suspense>
       )}
     </>
   );
 };
 
-export default Enquiry;
+export default EnquiryPage;
