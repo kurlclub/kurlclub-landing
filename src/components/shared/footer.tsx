@@ -19,7 +19,7 @@ const Footer = () => {
       <div className="absolute bottom-[-80%] right-[-10%] w-[320px] h-80 rounded-full blur-[120px] opacity-80 pointer-events-none bg-[linear-gradient(-135deg,#11141C_0%,#232709_34%,#7B882E_65%,#D3F702_82%,#F1FFA3_97%)]" />
 
       {/* Actual Footer Content */}
-      <footer className="relative container flex flex-col sm:flex-row items-start md:items-center justify-between w-full py-10 sm:py-[50px] md:pt-[78px] md:pb-[70px] gap-7 sm:gap-10 md:gap-5">
+      <footer className="relative container grid sm:grid-cols-2 items-start w-full py-10 sm:py-[50px] md:pt-[78px] md:pb-8 gap-7 sm:gap-x-10 md:gap-x-5 sm:gap-y-12 md:gap-y-[42px]">
         {/* Left section */}
         <div className="flex flex-col gap-[26px] max-w-[287px]">
           <Image
@@ -60,7 +60,7 @@ const Footer = () => {
         </div>
 
         {/* Right section */}
-        <div className="flex gap-20 md:gap-[188px] items-start">
+        <div className="flex gap-20 md:gap-[188px] sm:justify-end items-start">
           <div className="flex flex-col gap-5 sm:gap-6">
             {[
               { label: 'about', href: '#about' },
@@ -95,6 +95,18 @@ const Footer = () => {
             ))}
           </div>
         </div>
+        <span className="text-[16px] leading-[109%] flex items-center gap-1.5 mt-6 sm:mt-0">
+          <Image
+            src="/assets/svg/ind_flag.svg"
+            alt="ind"
+            height={28}
+            width={28}
+          />
+          Product of India
+        </span>
+        <span className="text-[16px] leading-[109%] text-secondary-blue-100 sm:text-end">
+          © kurltech systems Pvt Ltd {new Date().getFullYear()}
+        </span>
       </footer>
     </div>
   );
