@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { CloseIcon, Hamburger } from '@/icon/icon';
+import { navLinks } from '@/mock/layout';
 
 import Button from './button';
 
@@ -12,16 +13,7 @@ const Navbar = () => {
   const [activeLink, setActiveLink] = useState('');
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const links = useMemo(
-    () => [
-      { id: 1, label: 'About', href: '#about' },
-      { id: 2, label: 'Features', href: '#features' },
-      { id: 3, label: 'Testimonials', href: '#testimonial' },
-      // { id: 4, label: 'Pricing', href: '#pricing' },
-      { id: 5, label: 'FAQ', href: '#faq' },
-    ],
-    []
-  );
+  const links = useMemo(() => navLinks, []);
 
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);

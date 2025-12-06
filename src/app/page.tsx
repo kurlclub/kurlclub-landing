@@ -7,14 +7,13 @@ import {
   Testimonials,
 } from '@/components/landing';
 import FooterCard from '@/components/landing/footer-card';
+import BackToTop from '@/components/shared/back-to-top';
 import Footer from '@/components/shared/footer';
-import Navbar from '@/components/shared/navbar';
 
 export default function HomePage() {
   return (
     <>
       <div className="w-full flex items-center flex-col justify-center">
-        <Navbar />
         <Hero />
         <StartAndGrow />
         <Features />
@@ -24,6 +23,7 @@ export default function HomePage() {
       </div>
       <FooterCard />
       <Footer />
+      <BackToTop />
     </>
   );
 }

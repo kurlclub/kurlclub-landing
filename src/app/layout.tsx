@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Figtree } from 'next/font/google';
-import { Toaster } from 'react-hot-toast';
 
+import AppLayout from './app-layout';
 import './globals.css';
 
 const figtree = Figtree({
@@ -167,8 +167,7 @@ export default function RootLayout({
         />
       </head>
       <body className={figtree.variable}>
-        {children}
-        <Toaster position="top-right" />
+        <AppLayout>{children}</AppLayout>
       </body>
     </html>
   );

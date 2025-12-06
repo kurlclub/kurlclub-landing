@@ -1,13 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import {
-  FacebookIcon,
-  InstagramIcon,
-  TicktockIcon,
-  XIcon,
-  YoutubeIcon,
-} from '@/icon/icon';
+import { FacebookIcon, InstagramIcon, XIcon, YoutubeIcon } from '@/icon/icon';
 
 const Footer = () => {
   return (
