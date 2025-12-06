@@ -3,19 +3,58 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import Button from '@/components/shared/button';
 import Input from '@/components/shared/input';
 import { BackIcon } from '@/icon/icon';
 
 interface EnquiryCardProps {
-  onSubmit: () => void;
+  onSubmitClick: () => void;
 }
 
-const EnquiryCard: React.FC<EnquiryCardProps> = ({ onSubmit }) => {
+const EnquiryCard: React.FC<EnquiryCardProps> = ({ onSubmitClick }) => {
   const searchParams = useSearchParams();
-  const [email, setEmail] = useState(() => searchParams.get('email') || '');
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    watch,
+    formState: { isSubmitting },
+  } = useForm({
+    defaultValues: {
+      name: '',
+      businessName: '',
+      email: '',
+      phone: '',
+    },
+  });
+
+  useEffect(() => {
+    const emailFromURL = searchParams.get('email');
+    if (emailFromURL) {
+      setValue('email', emailFromURL);
+    }
+  }, [searchParams, setValue]);
+
+  const onSubmit = async (data: any) => {
+    const res = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+      reset();
+      onSubmitClick?.();
+    }
+  };
+
   return (
     <div className="w-full flex h-dvh md:h-screen items-center container flex-col gap-10 sm:gap-20 md:flex-row md:gap-8 lg:gap-10 xl:gap-20 sm:justify-center overflow-hidden py-7 md:py-0 max-w-[600px]! md:max-w-[1200px]!">
       {/* Background glow */}
@@ -65,22 +104,40 @@ const EnquiryCard: React.FC<EnquiryCardProps> = ({ onSubmit }) => {
       ></div>
 
       {/* Foreground content */}
-      <div className="relative z-10 flex flex-col gap-5 w-full md:max-w-[450px]">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="relative z-10 flex flex-col gap-5 w-full md:max-w-[450px]"
+      >
         <div className="flex flex-col gap-3 sm:gap-5">
-          <Input label="Name" />
-          <Input label="Business name" />
+          <Input
+            value={watch('name')}
+            label="Name"
+            {...register('name', { required: true })}
+          />
+          <Input
+            value={watch('businessName')}
+            label="Business Name"
+            {...register('businessName', { required: true })}
+          />
           <Input
             label="Email"
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={watch('email')}
+            {...register('email', {
+              required: true,
+              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            })}
           />
-          <Input label="Phone" />
+          <Input
+            value={watch('phone')}
+            label="Phone"
+            {...register('phone', { required: true })}
+          />
         </div>
-        <Button onClick={onSubmit} className="w-full mt-3">
-          Book a demo
+        <Button isDisabled={isSubmitting} type="submit" className="w-full mt-3">
+          {isSubmitting ? 'Booking...' : 'Book a demo'}
         </Button>
-      </div>
+      </form>
     </div>
   );
 };

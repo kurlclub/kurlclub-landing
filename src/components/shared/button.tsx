@@ -7,6 +7,8 @@ interface ButtonProps {
   onClick?: () => void;
   suffix?: ReactNode;
   className?: string;
+  type?: 'button' | 'submit' | 'reset';
+  isDisabled?: boolean;
 }
 
 const Button = ({
@@ -15,9 +17,11 @@ const Button = ({
   onClick,
   suffix,
   className = '',
+  type = 'button',
+  isDisabled = false,
 }: ButtonProps) => {
   const baseClasses =
-    'px-3 sm:px-5 py-3 sm:py-[15px] rounded-[10px] flex items-center justify-center cursor-pointer text-[14px] sm:text-[16px] font-medium leading-[109%] transition-all duration-300 transform text-nowrap h-auto h-[47px]';
+    'px-3 sm:px-5 py-3 sm:py-[15px] rounded-[10px] flex items-center justify-center cursor-pointer text-[14px] sm:text-[16px] font-medium leading-[109%] transition-all duration-300 transform text-nowrap h-auto h-[47px] disabled:cursor-not-allowed disabled:opacity-50 k-transition';
 
   const variantClasses =
     variant === 'primary'
@@ -26,6 +30,8 @@ const Button = ({
 
   return (
     <button
+      disabled={isDisabled}
+      type={type}
       onClick={onClick}
       className={`${baseClasses} ${variantClasses} ${className}`}
     >
